@@ -40,6 +40,7 @@
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
+  text-align: left;
 
 }
 
@@ -52,6 +53,7 @@
   border: 5px rgba(0,0,0,0.7);
   border-radius: 10px;
   margin: 10px;
+  text-align: left;
 }
 
 #subMain2{
