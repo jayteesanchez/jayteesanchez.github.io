@@ -7,30 +7,30 @@
 ##MVP
 
 ###AS A PLAYER...
-- I want to have 2 players
+[ ] I want to have 2 players
 
-- I want matched cards flip back over
+[ ] I want matched cards flip back over
 
-- I cant click the matched card after match has been made
+[ ] I cant click the matched card after match has been made
 
-- I want to see a display whos turn it is
+[ ] I want to see a display whos turn it is
 
-- I want to see a running total of matches to see whos winning
+[ ] I want to see a running total of matches to see whos winning
 
 ###AS A DEVELOPER...
-- I want a win to play a Jurassic Park theme
+[ ] I want a win to play a Jurassic Park theme
 
 
 ##ICEBOX
 
 
-- animations for hovering (shovel?)
+[ ] animations for hovering (shovel?)
 
-- overall game winner running count
+[ ] overall game winner running count
 
-- animation for winner
+[ ] animation for winner
 
-- sound when making illegal move
+[ ] sound when making illegal move
 
-- different islands with different dinosaurs to match
+[ ] different islands with different dinosaurs to match
 
