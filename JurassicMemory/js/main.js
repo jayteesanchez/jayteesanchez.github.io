@@ -8,13 +8,13 @@ function makeGameBoard(){
   var newImage= document.createElement("button");
   var imgH1= document.createElement("H1");
   $gameBoard.append(newImage);
-  $(newImage).attr("class", i);
+  $(newImage).attr("id", i);
   newImage.appendChild(imgH1);
  }
 }
 
 // variable to hold matching images
-var images= [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
+var images= [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9];
 
 // get images, place them in an array & randomize the order
 // function getImages(){
@@ -38,17 +38,18 @@ function randomizeImages(){
       this[j] = temp;
     }
   };
-
   images.randomize();
   setImages();
+  return images;
+
 }
 
 
 function setImages(){
   for (var i= 0; i< 18; i++){
-  var $button= $('body #container #mainSquare button[i]');
-  $button.html(images[i]);
-  console.log($button);
+  var button= document.getElementById(i);
+  $('button H1').text(images[i]);
+  console.log(images[i]);
 }
 }
 // // output images then hide them
