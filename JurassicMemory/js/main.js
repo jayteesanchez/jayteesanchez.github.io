@@ -47,8 +47,8 @@ function randomizeImages(){
 
 function setImages(){
   for (var i= 0; i< 18; i++){
-  var button= document.getElementById(i);
-  $('button H1').text(images[i]);
+  var $button= $('#mainSquare button');
+  $button.eq(i).text(images[i]);
   console.log(images[i]);
 }
 }
