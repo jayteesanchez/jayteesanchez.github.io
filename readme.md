@@ -18,7 +18,7 @@
 [] I want to see a running total of matches to see whos winning
 
 ###AS A DEVELOPER...
-[] I want a win to play a Jurassic Park theme
+- [] I want a win to play a Jurassic Park theme
 
 
 ##ICEBOX
@@ -26,11 +26,11 @@
 
 - [ ] animations for hovering (shovel?)
 
-[ ] overall game winner running count
+- [ ] overall game winner running count
 
-[ ] animation for winner
+- [ ] animation for winner
 
-[ ] sound when making illegal move
+- [ ] sound when making illegal move
 
-[ ] different islands with different dinosaurs to match
+- [ ] different islands with different dinosaurs to match
 
