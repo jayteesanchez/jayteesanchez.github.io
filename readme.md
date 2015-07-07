@@ -24,7 +24,7 @@
 ##ICEBOX
 
 
-[ ] animations for hovering (shovel?)
+- [ ] animations for hovering (shovel?)
 
 [ ] overall game winner running count
 
