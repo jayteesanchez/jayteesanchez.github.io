@@ -6,22 +6,25 @@ var $gameBoard= $('body #container #mainSquare');
 function makeGameBoard(){
   for (var i = 0; i < 18; i++) {
   var newImage= document.createElement("button");
-  $gameBoard.append(newImage)
-}
+  var imgH1= document.createElement("H1");
+  $gameBoard.append(newImage);
+  $(newImage).attr("class", i);
+  newImage.appendChild(imgH1);
+ }
 }
 
 // variable to hold matching images
-var images= [];
+var images= [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8];
 
 // get images, place them in an array & randomize the order
-function getImages(){
-for (var i = 0; i < 9; i++) {
-  var img =  $('img + i');
-  images.push(img);
-  images.push(img);
-}
-randomizeImages();
-}
+// function getImages(){
+// for (var i = 0; i < 9; i++) {
+//   var img =  $('img + i');
+//   images.push(img);
+//   images.push(img);
+// }
+// randomizeImages();
+// }
 // randomize array of images
 function randomizeImages(){
   Array.prototype.randomize = function()
@@ -37,8 +40,17 @@ function randomizeImages(){
   };
 
   images.randomize();
+  setImages();
 }
 
+
+function setImages(){
+  for (var i= 0; i< 18; i++){
+  var $button= $('body #container #mainSquare button[i]');
+  $button.html(images[i]);
+  console.log($button);
+}
+}
 // // output images then hide them
 // var output = "<ol>";
 // for (var i = 0; i < 16; i++) {
