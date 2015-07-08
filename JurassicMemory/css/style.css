@@ -30,9 +30,12 @@
     margin: 2px;
     display: inline-block;
     border-radius: 100px;
+    border: 0px;
+  }
+
+  .egg{
     background-image: url('../media/egg.jpg');
     background-size: 140px 145px;
-    border: 0px;
   }
 
   #title{

@@ -1,13 +1,15 @@
 console.log('codes working!');
+
 // defining the game board
 var $gameBoard= $('body #container #mainSquare');
-// filling the game board with first images
 
+// making the gameboard by adding buttons
 function makeGameBoard(){
   for (var i = 0; i < 18; i++) {
   var newImage= document.createElement("button");
   var imgH1= document.createElement("H1");
   $gameBoard.append(newImage);
+  $(newImage).attr("class", "egg");
   $(newImage).attr("id", i);
   newImage.appendChild(imgH1);
  }
@@ -41,46 +43,27 @@ function randomizeImages(){
   images.randomize();
   setImages();
   return images;
-
 }
 
-
+// outputting the randomized image array into the created buttons
 function setImages(){
   for (var i= 0; i< 18; i++){
   var $button= $('#mainSquare button');
-  $button.eq(i).text(images[i]);
+  $button.eq(i).text(images[i]).css('"display", "none"');
   console.log(images[i]);
 }
 }
-// // output images then hide them
-// var output = "<ol>";
-// for (var i = 0; i < 16; i++) {
-//   output += "<li>";
-//   output += "<img src = '" + images[i] + "'/>";
-//   output += "</li>";
-// }
-// output += "</ol>";
-// document.getElementById("container").innerHTML = output;
-// $("img").hide();
 
-// var guess1 = "";
-// var guess2 = "";
-// var count = 0;
-
-// $("li").click(function() {
-//   if ((count < 2) &&  ($(this).children("img").hasClass("face-up")) === false) {
-
-// Game start
-
-// function gameStart(){
- // randomize game board function
-//     alert ('The game is about to begin!');
-// }
-
+// Starting a New game
+function newGameStart(){
+  makeGameBoard();
+  randomizeImages();
+  setImages();
+}
 // Determining round winner
 
 function roundWinner(){
-  if(gameBoard === null){
+  if(playerMatches === 5){
     return true;
   }else{
     return false;
@@ -99,6 +82,7 @@ function getWinner(roundCount1, roundCount2){
 function checkMatch(){
   if(clickedSquare2 === clickedSquare1){
     return true;
+    matchCount();
 }else{
     return false;
 }
@@ -114,4 +98,14 @@ function nextMove(){
     move=player1;
 }
 
+}
+
+function matchCount(){
+  var matchCount1= 0;
+  var matchCount2= 0;
+  if(move= player1){
+    matchCount1++;
+  }else{
+    matchCount2++;
+  }
 }
