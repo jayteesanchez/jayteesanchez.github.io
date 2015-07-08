@@ -34,7 +34,7 @@
   }
 
   .egg{
-    background-image: url('../media/egg.jpg');
+    background-image: url('../media/egg.gif');
     background-size: 140px 145px;
   }
 
@@ -66,4 +66,19 @@
     float: left;
     background-color: purple;
     margin: 5px;
+  }
+
+  h1{
+    width: 140px;
+    height: 145px;
+    margin-top: -5px;
+    margin-left: -3px;
+    display: none;
+  }
+
+  .match{
+    width: 140px;
+    height: 145px;
+    margin-top: -5px;
+    margin-left: -3px;
   }

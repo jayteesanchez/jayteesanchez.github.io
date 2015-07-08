@@ -48,8 +48,8 @@ function randomizeImages(){
 // outputting the randomized image array into the created buttons
 function setImages(){
   for (var i= 0; i< 18; i++){
-  var $button= $('#mainSquare button');
-  $button.eq(i).text(images[i]).css('"display", "none"');
+  var $button= $('#mainSquare button H1');
+  $button.eq(i).append(images[i]).css('"display", "none"');
   console.log(images[i]);
 }
 }
@@ -63,7 +63,7 @@ function newGameStart(){
 // Determining round winner
 
 function roundWinner(){
-  if(playerMatches === 5){
+  if(matchCount1 === 5){
     return true;
   }else{
     return false;
@@ -92,14 +92,14 @@ function checkMatch(){
 var move= player1;
 
 function nextMove(){
-  if(player === player1){
+  if(move === player1){
     move= player2;
 }else{
     move=player1;
 }
 
 }
-
+// determining the round winner
 function matchCount(){
   var matchCount1= 0;
   var matchCount2= 0;
@@ -109,3 +109,10 @@ function matchCount(){
     matchCount2++;
   }
 }
+
+
+// event listener
+  // $gameBoard.on('click', function(){
+  //   $this.css('' '')
+  // } );
+
