@@ -7,27 +7,30 @@ var $gameBoard= $('body #container #mainSquare');
 function makeGameBoard(){
   for (var i = 0; i < 18; i++) {
   var newImage= document.createElement("button");
-  var imgH1= document.createElement("H1");
+  var imgli= document.createElement("li");
   $gameBoard.append(newImage);
   $(newImage).attr("class", "egg");
   $(newImage).attr("id", i);
-  newImage.appendChild(imgH1);
+  newImage.appendChild(imgli);
  }
+
 }
 
 // variable to hold matching images
-var images= [1,1,2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9];
+var images= [];
 
 // get images, place them in an array & randomize the order
-// function getImages(){
-// for (var i = 0; i < 9; i++) {
-//   var img =  $('img + i');
-//   images.push(img);
-//   images.push(img);
-// }
-// randomizeImages();
-// }
+function getImages(){
+for (var i = 1; i < 10; i++) {
+  var img = 'media/dino' + i + '.gif';
+  images.push(img);
+  images.push(img);
+}
+randomizeImages();
+}
+
 // randomize array of images
+
 function randomizeImages(){
   Array.prototype.randomize = function()
   {
@@ -45,11 +48,12 @@ function randomizeImages(){
   return images;
 }
 
+
 // outputting the randomized image array into the created buttons
 function setImages(){
+  var $button= $('#mainSquare button li');
   for (var i= 0; i< 18; i++){
-  var $button= $('#mainSquare button H1');
-  $button.eq(i).append(images[i]).css('"display", "none"');
+  $button.eq(i).css("background-image", "url(" + images[i] + ")");
   console.log(images[i]);
 }
 }
@@ -57,17 +61,24 @@ function setImages(){
 // Starting a New game
 function newGameStart(){
   makeGameBoard();
-  randomizeImages();
-  setImages();
+  getImages();
+  nextMove();
+
 }
 // Determining round winner
 
-function roundWinner(){
-  if(matchCount1 === 5){
-    return true;
-  }else{
-    return false;
-  }
+function getRoundWinner(move){
+  var roundCount1=0;
+  var roundCount2=0;
+  if(move=== player1){
+      if(matchCount === 5){
+        return roundCount1++;
+        getWinner(roundCount1, roundCount2);
+      }else{
+      return roundCount2++;
+      getWinner(roundCount1, roundCount2);
+        }
+      }
 }
 
 // Comparing Match counts to get Winner
@@ -79,10 +90,10 @@ function getWinner(roundCount1, roundCount2){
 }
 }
 // Determines if match is made
-function checkMatch(){
+function checkMatch(move){
   if(clickedSquare2 === clickedSquare1){
     return true;
-    matchCount();
+    matchCount(move);
 }else{
     return false;
 }
@@ -91,7 +102,7 @@ function checkMatch(){
 
 var move= player1;
 
-function nextMove(){
+function nextMove(move){
   if(move === player1){
     move= player2;
 }else{
@@ -100,19 +111,44 @@ function nextMove(){
 
 }
 // determining the round winner
-function matchCount(){
+function matchCount(move){
   var matchCount1= 0;
   var matchCount2= 0;
   if(move= player1){
     matchCount1++;
+    getRoundWinner(move);
+    nextMove();
   }else{
     matchCount2++;
+    getRoundWinner(move);
+    nextMove();
   }
 }
 
 
+var clickedSquare1= null;
+var clickedSquare2= null;
+
 // event listener
-  // $gameBoard.on('click', function(){
-  //   $this.css('' '')
-  // } );
+
+  mainSquare.addEventListener('click', function(event){
+    var clicks= 0
+    if(clicks=== 0){
+      $(event.srcElement.children[0]).css('display', 'block');
+      $(event.srcElement).toggleClass('egg');
+      return move;
+      clicks++;
+      return clickedSquare1= $(event.srcElement.children[0]);
+      checkMatch(move);
+
+  }else{
+      $(event.srcElement.children[0]).css('display', 'block');
+      $(event.srcElement).toggleClass('egg');
+      return move;
+      clicks++;
+      return clickedSquare2= $(event.srcElement.children[0]);
+      checkMatch(move);
+  }
+});
+
 
