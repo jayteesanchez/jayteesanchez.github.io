@@ -15,7 +15,6 @@ function makeGameBoard(){
  }
 
 }
-
 // variable to hold matching images
 var images= [];
 
@@ -28,9 +27,7 @@ for (var i = 1; i < 10; i++) {
 }
 randomizeImages();
 }
-
 // randomize array of images
-
 function randomizeImages(){
   Array.prototype.randomize = function()
   {
@@ -47,107 +44,121 @@ function randomizeImages(){
   setImages();
   return images;
 }
-
-
 // outputting the randomized image array into the created buttons
 function setImages(){
   var $button= $('#mainSquare button li');
   for (var i= 0; i< 18; i++){
   $button.eq(i).css("background-image", "url(" + images[i] + ")");
-  console.log(images[i]);
 }
 }
-
 // Starting a New game
 function newGameStart(){
   makeGameBoard();
   getImages();
   nextMove();
-
 }
 // Determining round winner
-
-function getRoundWinner(move){
+function getRoundWinner(matchCount1, matchCount2){
   var roundCount1=0;
   var roundCount2=0;
-  if(move=== player1){
-      if(matchCount === 5){
+      if(matchCount1 === 5){
         return roundCount1++;
         getWinner(roundCount1, roundCount2);
+      }else if(matchCount2 === 5){
+        return roundCount2++;
+        getWinner(roundCount1, roundCount2);
       }else{
-      return roundCount2++;
-      getWinner(roundCount1, roundCount2);
-        }
+        return;
       }
-}
 
+}
 // Comparing Match counts to get Winner
 function getWinner(roundCount1, roundCount2){
-  if(roundCount1 > roundCount2){
-    return player1;
-  }else {
-    return player2;
-}
+  if(roundCount1 === 3){
+    alert('player 1 is the winner!');
+    newGameStart();
+  }else if(roundCount2 === 3){
+    alert('player 2 is the winner!');
+    newGameStart();
+  }else{
+    return;
+  }
 }
 // Determines if match is made
-function checkMatch(move){
-  if(clickedSquare2 === clickedSquare1){
-    return true;
-    matchCount(move);
+function checkMatch(){
+  if(sClicks === 1){
+    return;
+}else if(clickedSquares[0] === clickedSquares[1]){
+    alert('match made!');
+    matchCount();
+}else if(clickedSquares[0] !== clickedSquares[1]){
+    alert('No Match, try again!');
+    return clickedSquares;
+    reHide();
 }else{
-    return false;
+  reHide();
 }
 }
 // Changing Player Moves
 
-var move= player1;
+var move= 'player1';
 
 function nextMove(move){
-  if(move === player1){
-    move= player2;
+  if(move === 'player1'){
+    move= 'player2';
 }else{
-    move=player1;
+    move= 'player1';
 }
 
 }
 // determining the round winner
-function matchCount(move){
+function matchCount(){
   var matchCount1= 0;
   var matchCount2= 0;
   if(move= player1){
     matchCount1++;
-    getRoundWinner(move);
+    getRoundWinner(matchCount1, matchCount2);
     nextMove();
   }else{
     matchCount2++;
-    getRoundWinner(move);
+    getRoundWinner(matchCount1, matchCount2);
     nextMove();
   }
 }
+// resetting the images if there is not match
+function reHide(){
+  $(clickedSquares[0]).css('display', 'none');
+  $(clickedSquares[0]).parent().toggleClass('egg');
+  $(clickedSquares[1]).css('display', 'none');
+  $(clickedSquares[1]).parent().toggleClass('egg');
+  var sClicks= 0;
+  var clickedSquares= [];
+}
 
+var clickedSquares= [];
 
-var clickedSquare1= null;
-var clickedSquare2= null;
+// Click Counter
+var sClicks= 0;
+
 
 // event listener
-
-  mainSquare.addEventListener('click', function(event){
-    var clicks= 0
-    if(clicks=== 0){
+  mainSquare.addEventListener('click', function getClicks(event){
+    if(sClicks === 0){
       $(event.srcElement.children[0]).css('display', 'block');
       $(event.srcElement).toggleClass('egg');
-      return move;
-      clicks++;
-      return clickedSquare1= $(event.srcElement.children[0]);
-      checkMatch(move);
+      clickedSquares.push($(event.srcElement.children[0]));
+      sClicks++;
+      console.log(clickedSquares);
 
+  }else if(sClicks === 1){
+      $(event.srcElement.children[0]).css('display', 'block');
+      $(event.srcElement).toggleClass('egg');
+      clickedSquares.push($(event.srcElement.children[0]));
+      sClicks++;
+      console.log(clickedSquares);
+      checkMatch();
   }else{
-      $(event.srcElement.children[0]).css('display', 'block');
-      $(event.srcElement).toggleClass('egg');
-      return move;
-      clicks++;
-      return clickedSquare2= $(event.srcElement.children[0]);
-      checkMatch(move);
+    clicks= 0;
   }
 });
 
