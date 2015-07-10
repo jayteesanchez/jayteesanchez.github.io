@@ -9,7 +9,9 @@ You were asked to come to the island of Jurassic Park to create dinosaurs. The S
 ###Techonologies
 -
 1. HTML: used to create the skeleton of the page
+
 2. CSS: Styled the Page
+
 3. JavaScript & Jquery: Created the logic and additional DOM elements.
 
 ###Design
@@ -32,8 +34,11 @@ You were asked to come to the island of Jurassic Park to create dinosaurs. The S
 
 ###Wanna Help?!?!
 1. Fork the Repo!
+
 2. All media used is in the Media folder
+
 3. additional Functions for multiplayer and multiple round winner are commented out in the main.js file. 
+
 4. When finished push your solutions back up!
 
 -
