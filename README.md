@@ -59,13 +59,13 @@ You were asked to come to the island of Jurassic Park to create dinosaurs. The S
 ###AS A DEVELOPER...
 
 - [X] I want to play a Jurassic Park theme
-- 
+ 
 - [X] Need to create initial Game board with images 	(Jul 7)
-- 
+ 
 - [X] Need to create event listeners to change images 	(Jul 7)
-- 
+ 
 - [X] Create Game Logic (Jul 7)
-- 
+
 - [ ] Create Reset Button
 
 
