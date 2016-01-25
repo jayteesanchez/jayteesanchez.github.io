@@ -13,7 +13,7 @@ console.log('codes working!');
   var $gameText= $('body #container #mainSquare #gameText');
 
 // Starting with Player 1
-  var move= 'Player1';
+  var move = 'Player 1';
 
 // variable to hold matching images
   var images= [];
@@ -66,15 +66,14 @@ function randomizeImages(){
 function setImages(){
   var $button= $('#mainSquare button li');
   for (var i= 0; i< 18; i++){
-  $button.eq(i).css("background-image", "url(" + images[i] + ")");
-}
+    $button.eq(i).css("background-image", "url(" + images[i] + ")");
+  }
 }
 
 // Starting a New game
 function newGameStart(){
   makeGameBoard();
   getImages();
-  // nextMove();
 // Plays the Theme on Start
   var audio = new Audio('media/Jurassic Park.mp3');
   audio.play();
@@ -90,17 +89,12 @@ function newGameStart(){
   });
 
 // Changing Player Moves, Doesnt work yet
-// function nextMove(move){
-//   if(move === 'Player1'){
-//     move= 'Player2';
-//     $gameText.text(move + " it's your turn!" );
-// }else{
-//     move= 'Player1';
-//     $gameText.text(move + " it's your turn!");
+function nextMove(){
+    console.log(move);
+  if(move === 'Player 1') return move = 'Player 2';
+  if(move === 'Player 2') return move = 'Player 1';
 
-// }
-
-// }
+}
 
 // Determines if match is made
 function checkMatch(){
@@ -108,16 +102,20 @@ function checkMatch(){
     console.log("one more click");
     return;
   }else if(parseInt(guess[0].split("").splice(10, 1)) === parseInt(guess[1].split("").splice(10, 1))){
-    $gameText.html("You know dinosaurs, keep going!");
+    $gameText.text("You know dinosaurs, keep going!");
     console.log("MATCH");
     sClicks= 0;
     clickedSquares= [];
     guess=[];
     matchCount();
+    nextMove();
+    $gameText.text(move + " it's your turn!" );
   }else if(parseInt(guess[0].split("").splice(10, 1)) !== parseInt(guess[1].split("").splice(10, 1))){
     $gameText.text("Not a match Try Again!");
+    nextMove();
     window.setTimeout("reHide()", 1100);
   }else{
+    nextMove();
     window.setTimeout("reHide()", 1100);
   }
 }
@@ -126,14 +124,12 @@ function checkMatch(){
 function matchCount(){
   // var matchCount1= 0;
   // var matchCount2= 0;
-  if(move= 'Player1'){
+  if(move === 'Player 1'){
     matchCounter++;
     getRoundWinner();
-    // nextMove();
   }else{
     // matchCount2++;
     getRoundWinner();
-    // nextMove();
   }
 }
 
@@ -183,10 +179,10 @@ function reHide(){
 
 // event listener
 $('#mainSquare').on('click', 'button', function(event){
-  if($(event.target).children() === $(event.target).children().css('display', 'block')){
+  console.log(event)
+  if(event.target.className === ''){
     return;
   }else if(sClicks < 2){
-    console.log(event.target.children[0]);
     $(event.target).children().css('display', 'block');
     $(event.target).toggleClass('egg');
     clickedSquares.push(event.target.children[0]);
